@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+venv/
+.env
+
+# Data / corpus (re-downloadable; keep the repo lean)
+corpus/
+index/
+*.npz
+*.jsonl
+
+# Generated results (regenerable)
+results/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Secrets
+*.key
