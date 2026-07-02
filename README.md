@@ -31,7 +31,9 @@ PDFs → text extraction → chunking (size/overlap configurable)
 - [x] Repo scaffold, corpus downloader
 - [x] Ingestion: PDF → cleaned, chunked text (505 chunks over 12 papers)
 - [x] Embedding index + dense retrieval (numpy exact cosine; 4/5 correct@1 on sanity probes)
-- [ ] BM25 hybrid + reranker
+- [x] BM25 + RRF hybrid + cross-encoder reranker — hybrid recovers the dense miss (5/5 correct@1):
+      dense embeddings whiffed on the exact phrase "memory bank of nominal patch features";
+      lexical BM25 nails it. Different failure modes are the whole point of hybrid.
 - [ ] Generation with citations
 - [ ] Eval harness (recall@k, faithfulness) + QA set
 - [ ] Ablation grid + results
