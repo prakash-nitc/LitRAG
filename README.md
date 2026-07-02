@@ -29,8 +29,8 @@ PDFs → text extraction → chunking (size/overlap configurable)
 ## Status
 
 - [x] Repo scaffold, corpus downloader
-- [ ] Ingestion: PDF → cleaned, chunked text
-- [ ] Embedding index + dense retrieval
+- [x] Ingestion: PDF → cleaned, chunked text (505 chunks over 12 papers)
+- [x] Embedding index + dense retrieval (numpy exact cosine; 4/5 correct@1 on sanity probes)
 - [ ] BM25 hybrid + reranker
 - [ ] Generation with citations
 - [ ] Eval harness (recall@k, faithfulness) + QA set
