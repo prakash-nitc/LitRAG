@@ -1,3 +1,15 @@
+---
+title: LitRAG
+emoji: "📚"
+colorFrom: indigo
+colorTo: blue
+sdk: gradio
+sdk_version: 5.29.0
+app_file: app.py
+pinned: false
+license: mit
+---
+
 # LitRAG — Retrieval-Augmented QA over research papers, measured properly
 
 Ask questions across a corpus of computer-vision research papers and get answers
@@ -39,7 +51,21 @@ PDFs → text extraction → chunking (size/overlap configurable)
       free-tier token budget (~3 calls/min at k=5)
 - [x] Eval harness + curated QA set (46 grounded + 6 unanswerable) — results below
 - [x] Ablation grid: 30 configs (3 chunk sizes × 3 models × modes) — findings below
-- [ ] Gradio demo
+- [x] Gradio demo (`app.py`) — defaults to the ablation-selected config; ships the
+      evaluated index for instant startup; retrieval-only fallback without an API key
+
+## Demo
+
+```bash
+python app.py          # http://127.0.0.1:7860
+```
+
+Live demo: _[add Hugging Face Space URL after deploy]_
+
+**Deploy to HF Spaces:** new Space → SDK *Gradio* → upload `app.py`, `litrag/`,
+`index/chunks.jsonl`, `index/dense_bge-small-en-v1.5.npz`, `requirements.txt`,
+`README.md` (or link this repo) → add `GROQ_API_KEY` as a **Space secret** →
+build. Without the secret the demo runs retrieval-only.
 
 ## Results — retrieval (46 curated questions, paper-level ground truth)
 
