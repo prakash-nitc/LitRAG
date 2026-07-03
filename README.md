@@ -52,6 +52,15 @@ PDFs → text extraction → chunking (size/overlap configurable)
 
 Reproduce: `python scripts/run_eval.py`
 
+**Honest findings:**
+- **BM25 beats dense embeddings here** — our hand-written questions share the papers'
+  exact vocabulary ("memory bank", "harmonic averaging"), which favors lexical match.
+  Paraphrased end-user queries would shift the balance toward dense; the eval measures
+  what it measures.
+- **Plain RRF hybrid does not beat BM25 at rank 1** — fusion averages in dense's weaker
+  rankings. The win comes from the **cross-encoder reranker** on hybrid candidates:
+  best rank-1, perfect recall@3.
+
 ## Ablation — chunk size × embedding model × retrieval mode (30 configs)
 
 recall@1, full 46-question set. Reproduce: `python scripts/run_ablation.py`
@@ -95,15 +104,6 @@ recall@1, full 46-question set. Reproduce: `python scripts/run_ablation.py`
 Small subset (8 answerable + 6 unanswerable) — the free-tier token budget paces LLM calls;
 retrieval metrics above run on the full 46-question set. Reproduce:
 `python scripts/run_eval.py --generation`
-
-**Honest findings:**
-- **BM25 beats dense embeddings here** — our hand-written questions share the papers'
-  exact vocabulary ("memory bank", "harmonic averaging"), which favors lexical match.
-  Paraphrased end-user queries would shift the balance toward dense; the eval measures
-  what it measures.
-- **Plain RRF hybrid does not beat BM25 at rank 1** — fusion averages in dense's weaker
-  rankings. The win comes from the **cross-encoder reranker** on hybrid candidates:
-  best rank-1, perfect recall@3.
 
 ## Corpus
 
