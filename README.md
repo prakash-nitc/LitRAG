@@ -34,7 +34,9 @@ PDFs → text extraction → chunking (size/overlap configurable)
 - [x] BM25 + RRF hybrid + cross-encoder reranker — hybrid recovers the dense miss (5/5 correct@1):
       dense embeddings whiffed on the exact phrase "memory bank of nominal patch features";
       lexical BM25 nails it. Different failure modes are the whole point of hybrid.
-- [ ] Generation with citations
+- [x] Generation with citations — grounded-only prompting, [paper:chunk] citations,
+      explicit refusal on out-of-corpus questions (verified); 429-aware backoff for the
+      free-tier token budget (~3 calls/min at k=5)
 - [ ] Eval harness (recall@k, faithfulness) + QA set
 - [ ] Ablation grid + results
 - [ ] Gradio demo
