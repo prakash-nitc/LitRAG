@@ -7,10 +7,14 @@ venv/
 
 # Data / corpus (re-downloadable; keep the repo lean)
 corpus/
-index/
+index/*
 *.npz
 *.jsonl
+# tracked exceptions: the QA set, and the evaluated index the demo ships with
+# (1.5 MB — lets HF Spaces boot instantly instead of re-embedding on cold start)
 !eval/qa_set.jsonl
+!index/chunks.jsonl
+!index/dense_bge-small-en-v1.5.npz
 
 # Generated results (regenerable)
 results/
