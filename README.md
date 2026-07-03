@@ -38,7 +38,7 @@ PDFs → text extraction → chunking (size/overlap configurable)
       explicit refusal on out-of-corpus questions (verified); 429-aware backoff for the
       free-tier token budget (~3 calls/min at k=5)
 - [x] Eval harness + curated QA set (46 grounded + 6 unanswerable) — results below
-- [ ] Ablation grid (chunk size × embedding model) + results
+- [x] Ablation grid: 30 configs (3 chunk sizes × 3 models × modes) — findings below
 - [ ] Gradio demo
 
 ## Results — retrieval (46 curated questions, paper-level ground truth)
@@ -51,6 +51,37 @@ PDFs → text extraction → chunking (size/overlap configurable)
 | **hybrid + rerank** | **0.913** | **1.000** | **1.000** | **0.953** |
 
 Reproduce: `python scripts/run_eval.py`
+
+## Ablation — chunk size × embedding model × retrieval mode (30 configs)
+
+recall@1, full 46-question set. Reproduce: `python scripts/run_ablation.py`
+
+| model | mode | s120 | s220 | s400 |
+|---|---|---|---|---|
+| — | bm25 | 0.739 | 0.870 | 0.804 |
+| MiniLM-L6 | dense | 0.804 | 0.783 | 0.739 |
+| MiniLM-L6 | hybrid | 0.804 | 0.804 | 0.804 |
+| MiniLM-L6 | hybrid+rerank | 0.913 | 0.913 | **0.957** |
+| bge-small | dense | 0.891 | **0.957** | 0.891 |
+| bge-small | hybrid | 0.870 | 0.935 | 0.935 |
+| bge-small | hybrid+rerank | 0.913 | 0.913 | **0.957** |
+| e5-small | dense | 0.935 | 0.891 | 0.848 |
+| e5-small | hybrid | 0.913 | **0.957** | **0.957** |
+| e5-small | hybrid+rerank | 0.913 | 0.870 | **0.957** |
+
+**What the grid actually says:**
+
+1. **The embedding model is the biggest lever.** bge-small *dense-only* (0.957) matches the
+   entire hybrid+rerank stack built on MiniLM — one model swap outperformed all the
+   retrieval machinery added to a weaker embedder.
+2. **The reranker is an equalizer, not a universal upgrade.** It lifts weak first stages
+   (MiniLM: 0.783 → 0.913+) but can *hurt* strong ones (e5 hybrid s220: 0.957 → 0.870) —
+   the general-domain ms-marco cross-encoder can overrule a domain-fit bi-encoder.
+3. **No universal chunk size.** BM25 peaks at 220 words, MiniLM-dense prefers 120,
+   reranked configs prefer 400. Chunk size interacts with the stack; tuning it in
+   isolation is meaningless.
+4. **Best simple configuration: bge-small, dense-only, default chunking — 0.957 recall@1,
+   0.978 MRR** with no BM25 and no reranker. Simplicity won.
 
 ## Results — answer quality (hybrid retrieval, llama-3.1-8b-instant)
 
