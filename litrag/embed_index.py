@@ -66,14 +66,19 @@ def load_chunks(chunks_path: str) -> List[dict]:
 
 
 def build_index(chunks_path: str, model_name: str = DEFAULT_MODEL,
-                out_dir: str = "index") -> str:
-    """Embed all chunks and persist vectors + metadata in one npz."""
+                out_dir: str = "index", out_path: str = None) -> str:
+    """Embed all chunks and persist vectors + metadata in one npz.
+
+    ``out_path`` overrides the default naming — the ablation builds many
+    (model x chunk-size) indexes that must not collide.
+    """
     chunks = load_chunks(chunks_path)
     embedder = Embedder(model_name)
     vectors = embedder.encode_passages([c["text"] for c in chunks])
 
-    os.makedirs(out_dir, exist_ok=True)
-    out_path = os.path.join(out_dir, f"dense_{model_slug(model_name)}.npz")
+    if out_path is None:
+        out_path = os.path.join(out_dir, f"dense_{model_slug(model_name)}.npz")
+    os.makedirs(os.path.dirname(out_path) or ".", exist_ok=True)
     np.savez(
         out_path,
         vectors=vectors,
