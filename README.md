@@ -37,8 +37,8 @@ PDFs → text extraction → chunking (size/overlap configurable)
 - [x] Generation with citations — grounded-only prompting, [paper:chunk] citations,
       explicit refusal on out-of-corpus questions (verified); 429-aware backoff for the
       free-tier token budget (~3 calls/min at k=5)
-- [ ] Eval harness (recall@k, faithfulness) + QA set
-- [ ] Ablation grid + results
+- [x] Eval harness + curated QA set (46 grounded + 6 unanswerable) — results below
+- [ ] Ablation grid (chunk size × embedding model) + results
 - [ ] Gradio demo
 
 ## Results — retrieval (46 curated questions, paper-level ground truth)
