@@ -60,7 +60,7 @@ PDFs → text extraction → chunking (size/overlap configurable)
 python app.py          # http://127.0.0.1:7860
 ```
 
-Live demo: _[add Hugging Face Space URL after deploy]_
+**Live demo: https://huggingface.co/spaces/prakash-nitc/LitRAG**
 
 **Deploy to HF Spaces:** new Space → SDK *Gradio* → upload `app.py`, `litrag/`,
 `index/chunks.jsonl`, `index/dense_bge-small-en-v1.5.npz`, `requirements.txt`,
