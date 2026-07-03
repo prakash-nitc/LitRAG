@@ -52,6 +52,19 @@ PDFs → text extraction → chunking (size/overlap configurable)
 
 Reproduce: `python scripts/run_eval.py`
 
+## Results — answer quality (hybrid retrieval, llama-3.1-8b-instant)
+
+| metric | score | meaning |
+|---|---|---|
+| citation validity | **1.00** | every cited [paper:chunk] exists in the retrieved evidence — no fabricated citations (8/8) |
+| judge correctness | **1.00** | LLM judge marks all subset answers correct (caveat: same-family judge) |
+| key-phrase hit | 0.875 | 7/8 answers contain the expected key idea verbatim |
+| refusal accuracy | **0.83** | 5/6 out-of-corpus questions correctly refused — **one leaked**: the model answered a general question from its own knowledge despite the grounded-only instruction. Grounding prompts reduce, not eliminate, parametric leakage. |
+
+Small subset (8 answerable + 6 unanswerable) — the free-tier token budget paces LLM calls;
+retrieval metrics above run on the full 46-question set. Reproduce:
+`python scripts/run_eval.py --generation`
+
 **Honest findings:**
 - **BM25 beats dense embeddings here** — our hand-written questions share the papers'
   exact vocabulary ("memory bank", "harmonic averaging"), which favors lexical match.
