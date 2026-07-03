@@ -1,0 +1,52 @@
+{"q": "What training objective does CLIP use to align images and text?", "paper": "CLIP", "hint": "contrastive"}
+{"q": "How many image-text pairs was CLIP trained on?", "paper": "CLIP", "hint": "400 million"}
+{"q": "How does CLIP perform classification on a task it was never trained for?", "paper": "CLIP", "hint": "text"}
+{"q": "Which architectures does CLIP consider for its image encoder?", "paper": "CLIP", "hint": "Transformer"}
+{"q": "What is visual instruction tuning?", "paper": "LLaVA", "hint": "instruction"}
+{"q": "How does LLaVA connect the vision encoder to the language model?", "paper": "LLaVA", "hint": "projection"}
+{"q": "Which vision encoder does LLaVA build on?", "paper": "LLaVA", "hint": "CLIP"}
+{"q": "How was LLaVA's multimodal instruction-following data generated?", "paper": "LLaVA", "hint": "GPT-4"}
+{"q": "What does PatchCore store in its memory bank?", "paper": "PatchCore", "hint": "patch"}
+{"q": "How does PatchCore keep its memory bank small?", "paper": "PatchCore", "hint": "coreset"}
+{"q": "How does PatchCore compute the anomaly score of a test image?", "paper": "PatchCore", "hint": "nearest"}
+{"q": "Does PatchCore train its feature extractor on the target data?", "paper": "PatchCore", "hint": "pretrained"}
+{"q": "How does PaDiM model the distribution of normal patch features?", "paper": "PaDiM", "hint": "Gaussian"}
+{"q": "Which distance does PaDiM use to score anomalies?", "paper": "PaDiM", "hint": "Mahalanobis"}
+{"q": "How does PaDiM combine features from different network layers?", "paper": "PaDiM", "hint": "concatenat"}
+{"q": "Does PaDiM fine-tune its backbone network?", "paper": "PaDiM", "hint": "pretrained"}
+{"q": "How does WinCLIP aggregate anomaly scores from overlapping windows?", "paper": "WinCLIP", "hint": "harmonic"}
+{"q": "What is WinCLIP's compositional prompt ensemble made of?", "paper": "WinCLIP", "hint": "state"}
+{"q": "How does WinCLIP+ make use of a few normal reference images?", "paper": "WinCLIP", "hint": "reference"}
+{"q": "At which scales does WinCLIP extract windows from the image?", "paper": "WinCLIP", "hint": "scale"}
+{"q": "What kind of prompts does AnomalyCLIP learn?", "paper": "AnomalyCLIP", "hint": "object-agnostic"}
+{"q": "Why does AnomalyCLIP avoid prompts tied to specific object classes?", "paper": "AnomalyCLIP", "hint": "generali"}
+{"q": "What two text prompt templates does AnomalyCLIP learn?", "paper": "AnomalyCLIP", "hint": "abnormal"}
+{"q": "Across how many datasets is AnomalyCLIP evaluated?", "paper": "AnomalyCLIP", "hint": "17"}
+{"q": "How does AnomalyGPT remove the need for manual threshold tuning?", "paper": "AnomalyGPT", "hint": "threshold"}
+{"q": "What does AnomalyGPT's decoder output for localization?", "paper": "AnomalyGPT", "hint": "pixel"}
+{"q": "How does AnomalyGPT deal with the scarcity of anomaly training data?", "paper": "AnomalyGPT", "hint": "simulat"}
+{"q": "How does AnomalyGPT adapt to a new dataset with only a few examples?", "paper": "AnomalyGPT", "hint": "in-context"}
+{"q": "Into which two subtasks does OVVAD decompose open-vocabulary video anomaly detection?", "paper": "OVVAD", "hint": "categor"}
+{"q": "What provides semantic knowledge about novel anomaly categories in OVVAD?", "paper": "OVVAD", "hint": "language model"}
+{"q": "What problem does open-vocabulary video anomaly detection address beyond the closed-set setting?", "paper": "OVVAD", "hint": "unseen"}
+{"q": "On which surveillance benchmarks is OVVAD evaluated?", "paper": "OVVAD", "hint": "UCF-Crime"}
+{"q": "How does LAVAD convert video frames into text?", "paper": "LAVAD", "hint": "caption"}
+{"q": "What role does the large language model play in LAVAD?", "paper": "LAVAD", "hint": "scor"}
+{"q": "How does LAVAD deal with noisy or wrong captions?", "paper": "LAVAD", "hint": "cross-modal"}
+{"q": "Does LAVAD require any training, and on which datasets is it evaluated?", "paper": "LAVAD", "hint": "training-free"}
+{"q": "What does VERA learn instead of updating model weights?", "paper": "VERA", "hint": "verbaliz"}
+{"q": "What kind of questions does VERA learn to guide the vision-language model?", "paper": "VERA", "hint": "guiding"}
+{"q": "Are the vision-language model's parameters updated in VERA?", "paper": "VERA", "hint": "frozen"}
+{"q": "How does VERA make video anomaly detection explainable?", "paper": "VERA", "hint": "language"}
+{"q": "What is the Perception-to-Cognition Chain-of-Thought in VAD-R1?", "paper": "VAD-R1", "hint": "perception"}
+{"q": "Which reinforcement learning algorithm does VAD-R1 propose?", "paper": "VAD-R1", "hint": "GRPO"}
+{"q": "What dataset does VAD-R1 introduce for anomaly reasoning?", "paper": "VAD-R1", "hint": "Vad-Reasoning"}
+{"q": "What task does VAD-R1 formalize beyond simple anomaly detection?", "paper": "VAD-R1", "hint": "reasoning"}
+{"q": "Which model families does the Quo Vadis survey put in the spotlight for anomaly detection?", "paper": "QuoVadis-AD", "hint": "LLM"}
+{"q": "What shift in anomaly detection research does the Quo Vadis paper discuss?", "paper": "QuoVadis-AD", "hint": "anomaly"}
+{"q": "What is the recipe for making biryani?", "paper": null, "hint": null}
+{"q": "What is the capital of France?", "paper": null, "hint": null}
+{"q": "How do I train a YOLO object detector on my own dataset?", "paper": null, "hint": null}
+{"q": "What is the time complexity of quicksort?", "paper": null, "hint": null}
+{"q": "What will the weather be like tomorrow?", "paper": null, "hint": null}
+{"q": "Which stocks should I invest in this year?", "paper": null, "hint": null}

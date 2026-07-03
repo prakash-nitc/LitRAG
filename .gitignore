@@ -10,6 +10,7 @@ corpus/
 index/
 *.npz
 *.jsonl
+!eval/qa_set.jsonl
 
 # Generated results (regenerable)
 results/
