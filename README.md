@@ -41,6 +41,26 @@ PDFs → text extraction → chunking (size/overlap configurable)
 - [ ] Ablation grid + results
 - [ ] Gradio demo
 
+## Results — retrieval (46 curated questions, paper-level ground truth)
+
+| config | recall@1 | recall@3 | recall@5 | MRR |
+|---|---|---|---|---|
+| dense (MiniLM) | 0.783 | 0.935 | 0.935 | 0.851 |
+| BM25 | 0.870 | 0.978 | **1.000** | 0.915 |
+| hybrid (RRF) | 0.804 | 0.935 | **1.000** | 0.879 |
+| **hybrid + rerank** | **0.913** | **1.000** | **1.000** | **0.953** |
+
+Reproduce: `python scripts/run_eval.py`
+
+**Honest findings:**
+- **BM25 beats dense embeddings here** — our hand-written questions share the papers'
+  exact vocabulary ("memory bank", "harmonic averaging"), which favors lexical match.
+  Paraphrased end-user queries would shift the balance toward dense; the eval measures
+  what it measures.
+- **Plain RRF hybrid does not beat BM25 at rank 1** — fusion averages in dense's weaker
+  rankings. The win comes from the **cross-encoder reranker** on hybrid candidates:
+  best rank-1, perfect recall@3.
+
 ## Corpus
 
 Vision-language and anomaly-detection literature (CLIP, WinCLIP, LAVAD, VERA, …) —
