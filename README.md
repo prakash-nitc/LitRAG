@@ -1,15 +1,3 @@
----
-title: LitRAG
-emoji: "📚"
-colorFrom: indigo
-colorTo: blue
-sdk: gradio
-sdk_version: 5.29.0
-app_file: app.py
-pinned: false
-license: mit
----
-
 # LitRAG — Retrieval-Augmented QA over research papers, measured properly
 
 Ask questions across a corpus of computer-vision research papers and get answers
@@ -62,10 +50,9 @@ python app.py          # http://127.0.0.1:7860
 
 **Live demo: https://huggingface.co/spaces/prakash-nitc/LitRAG**
 
-**Deploy to HF Spaces:** new Space → SDK *Gradio* → upload `app.py`, `litrag/`,
-`index/chunks.jsonl`, `index/dense_bge-small-en-v1.5.npz`, `requirements.txt`,
-`README.md` (or link this repo) → add `GROQ_API_KEY` as a **Space secret** →
-build. Without the secret the demo runs retrieval-only.
+**Deployment:** live on HF Spaces (link above); `GROQ_API_KEY` is set as a Space
+secret (without it the demo runs retrieval-only). The Space keeps its own README copy
+with the required YAML front matter — this GitHub copy omits it for readability.
 
 ## Results — retrieval (46 curated questions, paper-level ground truth)
 
