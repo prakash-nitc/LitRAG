@@ -1,5 +1,7 @@
 # LitRAG — Retrieval-Augmented QA over research papers, measured properly
 
+[![tests](https://github.com/prakash-nitc/LitRAG/actions/workflows/tests.yml/badge.svg)](https://github.com/prakash-nitc/LitRAG/actions/workflows/tests.yml)
+
 Ask questions across a corpus of computer-vision research papers and get answers
 **with citations** — built the unglamorous way: **evaluation first**.
 
@@ -134,6 +136,19 @@ pip install -r requirements.txt
 python scripts/download_corpus.py
 # (further stages land as they are built — see Status)
 ```
+
+## Tests
+
+```bash
+pip install -r requirements-dev.txt
+python -m pytest
+```
+
+The suite pins down the parts every reported number depends on: chunk window
+arithmetic, RRF fusion, recall@k / MRR computed by hand on a fake searcher,
+citation-validity and refusal detection, and the integrity of the shipped QA set and
+index (row alignment, unit-norm vectors). No model download or API key needed —
+CI runs it on Python 3.10–3.12.
 
 ## License
 
