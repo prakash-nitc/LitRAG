@@ -1,0 +1,6 @@
+# Test-only dependencies. The unit tests never load an embedding model or call
+# the LLM, so they need only the light half of requirements.txt.
+numpy>=1.24.0
+rank-bm25>=0.2.2
+requests>=2.31.0
+pytest>=8.0.0
