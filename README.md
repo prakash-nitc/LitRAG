@@ -80,6 +80,10 @@ Reproduce: `python scripts/run_eval.py`
 
 recall@1, full 46-question set. Reproduce: `python scripts/run_ablation.py`
 
+![recall@1 heatmap over the 30-config ablation grid](docs/figures/ablation_recall1.png)
+
+Figure: `python scripts/plot_ablation.py` (needs matplotlib; reads `results/ablation.csv`).
+
 | model | mode | s120 | s220 | s400 |
 |---|---|---|---|---|
 | — | bm25 | 0.739 | 0.870 | 0.804 |
