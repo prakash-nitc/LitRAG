@@ -134,8 +134,13 @@ python scripts/download_corpus.py   # fetches PDFs from arXiv into corpus/
 ```bash
 pip install -r requirements.txt
 python scripts/download_corpus.py
-# (further stages land as they are built — see Status)
+python -m litrag.ingest              # -> index/chunks.jsonl
+python -m litrag.embed_index         # -> index/dense_<model>.npz
+python -m litrag.search --query "What does PatchCore store in its memory bank?"
 ```
+
+More detail: [architecture and design decisions](docs/ARCHITECTURE.md) ·
+[evaluation methodology and threats to validity](docs/EVALUATION.md)
 
 ## Tests
 
